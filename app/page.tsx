@@ -1,7 +1,13 @@
-import Image from "next/image";
+import React from "react";
 
-export default function Home() {
+const page = () => {
   return (
-    <h1 className="bg-black text-white text-center">Welcome to Next</h1>
+    <div>
+      <h1 className="text-3xl text-yellow-500 bg-black text-center p-4">
+        Welcome to Next.JS
+      </h1>
+    </div>
   );
-}
+};
+
+export default page;
