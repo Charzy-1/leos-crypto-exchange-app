@@ -21,6 +21,7 @@ const Navbar = () => {
 
       <p>Global Search</p>
 
+      {/* Toggle button container */}
       <div className="flex-between gap-5">
         <Theme />
       </div>
