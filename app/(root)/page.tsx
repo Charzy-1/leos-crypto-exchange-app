@@ -1,12 +1,28 @@
-import React from "react";
+import { auth, signOut } from "@/auth";
+import { Button } from "@/components/ui/button";
+import ROUTES from "@/constants/routes";
 
-const page = () => {
+const Home = async () => {
+  const session = await auth();
+
+  console.log(session);
+
   return (
     <>
-      <h1 className="h1-bold font-space-grotesk p-4">Welcome to Next.JS</h1>
-      <h1 className="h1-bold font-inter p-4 text-center">Welcome to Next.JS</h1>
+      <h1 className="h1-bold">Welcome to the world of Next.js</h1>
+
+      <form
+        className="px-10 pt-[100px]"
+        action={async () => {
+          "use server";
+
+          await signOut({ redirectTo: ROUTES.SIGN_IN });
+        }}
+      >
+        <Button type="submit">Log out</Button>
+      </form>
     </>
   );
 };
 
-export default page;
+export default Home;
