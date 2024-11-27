@@ -21,9 +21,9 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
           </div>
           <Image
             src="images/site-logo.svg"
-            alt="DevFlow Logo"
-            width={50}
-            height={50}
+            alt="Leos Exchange Logo"
+            width={70}
+            height={70}
             className="object-contain"
           />
         </div>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Theme from "./Theme";
+import MobileNavigation from "./MobileNavigation";
 
 const Navbar = () => {
   return (
@@ -9,8 +10,8 @@ const Navbar = () => {
       <Link href="/" className="flex items-center gap-1">
         <Image
           src="/images/site-logo.svg"
-          width={23}
-          height={23}
+          width={70}
+          height={70}
           alt="Leosexchange Logo"
         />
 
@@ -24,6 +25,8 @@ const Navbar = () => {
       {/* Toggle button container */}
       <div className="flex-between gap-5">
         <Theme />
+
+        <MobileNavigation />
       </div>
     </nav>
   );
