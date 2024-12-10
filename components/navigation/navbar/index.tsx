@@ -19,11 +19,11 @@ const Navbar = () => {
       <Link href="/" className="flex items-center gap-1">
         <Image
           src="/images/site-logo.svg"
-          width={70}
-          height={70}
+          width={50}
+          height={50}
           alt="Leosexchange Logo"
         />
-        <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900 max-sm:hidden">
+        <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900 text-[10px] sm:text-lg md:text-xl">
           Leos<span className="text-green-500">Exchange</span>
         </p>
       </Link>

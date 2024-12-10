@@ -20,3 +20,22 @@ export const sidebarLinks = [
     label: "Sign out",
   },
 ];
+
+// const technologies = [
+//   {
+//     name: "Bitcoin",
+//     icon: bitcoin,
+//   },
+//   {
+//     name: "Tether",
+//     icon: Tether,
+//   },
+//   {
+//     name: "Ethereum",
+//     icon: Ether,
+//   },
+//   {
+//     name: "USD",
+//     icon: Us,
+//   },
+// ];

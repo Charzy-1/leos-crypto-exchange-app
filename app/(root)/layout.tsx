@@ -15,6 +15,9 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     pathname.startsWith(route)
   );
 
+  // Check if the current route is `/home`
+  const isHomePage = pathname === "/home";
+
   return (
     <main className="background-light850_dark100 relative">
       {/* Navbar is always visible */}
@@ -30,8 +33,12 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
 
         {/* Main content section */}
         <section
-          className={`flex min-h-screen flex-1 flex-col px-6 pb-6 pt-36 max-md:pb-14 sm:px-14 ${
-            shouldShowSidebar ? "" : "mx-auto w-full max-w-5xl"
+          className={`flex min-h-screen flex-1 flex-col px-6 pb-6 pt-28 max-md:pb-14 ${
+            shouldShowSidebar
+              ? "" // Sidebar present, so no centering
+              : isHomePage
+                ? "w-full" // No centering for /home
+                : "w-full" // Centered for other routes
           }`}
         >
           {children}
@@ -42,3 +49,11 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
 };
 
 export default RootLayout;
+
+// className={`flex min-h-screen flex-1 flex-col px-6 pb-6 pt-36 max-md:pb-14 ${
+//   shouldShowSidebar
+//     ? "" // Sidebar present, so no centering
+//     : isHomePage
+//       ? "w-full" // No centering for /home
+//       : "mx-auto w-full max-w-5xl" // Centered for other routes
+// }`}
