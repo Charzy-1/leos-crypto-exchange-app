@@ -49,11 +49,3 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
 };
 
 export default RootLayout;
-
-// className={`flex min-h-screen flex-1 flex-col px-6 pb-6 pt-36 max-md:pb-14 ${
-//   shouldShowSidebar
-//     ? "" // Sidebar present, so no centering
-//     : isHomePage
-//       ? "w-full" // No centering for /home
-//       : "mx-auto w-full max-w-5xl" // Centered for other routes
-// }`}
