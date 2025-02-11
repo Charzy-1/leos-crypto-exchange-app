@@ -4,7 +4,7 @@ import { features } from "@/constants"; // Import features array
 
 const AboutUs = () => {
   return (
-    <div className="background-light900_dark200 bg-gray-100 p-6 dark:bg-transparent">
+    <div className="background-light900_dark200 mt-[4em] bg-gray-100 p-6 dark:bg-transparent">
       {/* Main Section */}
       <section className="text-center">
         {/* Heading */}
@@ -22,7 +22,7 @@ const AboutUs = () => {
           {features.map(({ id, imgSrc, altText, title, description }) => (
             <div
               key={id}
-              className="background-light900_dark200 card-wrapper dark:shadow-light100_dark100 rounded-lg p-6 shadow-lg"
+              className="card-wrapper dark:shadow-light100_dark100 rounded-lg p-6 shadow-lg"
             >
               <div className="relative mx-auto mb-4 size-16">
                 <Image src={imgSrc} alt={altText} width={64} height={64} />

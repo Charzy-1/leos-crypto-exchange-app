@@ -24,7 +24,7 @@ export const sidebarLinks = [
 export const features = [
   {
     id: 1,
-    imgSrc: "/images/img5.png", // Use relative paths if images are in the public folder
+    imgSrc: "/images/img1.png", // Use relative paths if images are in the public folder
     altText: "Swift Transactions",
     title: "Swift Transactions",
     description:
@@ -32,7 +32,7 @@ export const features = [
   },
   {
     id: 2,
-    imgSrc: "/images/img5.png",
+    imgSrc: "/images/img2.png",
     altText: "Secured Payments",
     title: "Secured & Safe Payments",
     description:
@@ -40,7 +40,7 @@ export const features = [
   },
   {
     id: 3,
-    imgSrc: "/images/img5.png",
+    imgSrc: "/images/img3.png",
     altText: "Instant Withdrawal",
     title: "Instant Withdrawal",
     description:
@@ -48,7 +48,7 @@ export const features = [
   },
   {
     id: 4,
-    imgSrc: "/images/img5.png",
+    imgSrc: "/images/img4.png",
     altText: "We buy Giftcards",
     title: "We buy Giftcards",
     description:
@@ -64,7 +64,7 @@ export const features = [
   },
   {
     id: 6,
-    imgSrc: "/images/img5.png",
+    imgSrc: "/images/img6.png",
     altText: "Registration Bonus",
     title: "Registration Bonus",
     description:
