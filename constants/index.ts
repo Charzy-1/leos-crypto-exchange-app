@@ -71,3 +71,24 @@ export const features = [
       "Sign up for exclusive benefits and get a registration bonus to kickstart your journey.",
   },
 ];
+
+export const testimonials = [
+  {
+    id: 1,
+    name: "Mark",
+    text: "Exchange Gift Cards and Crypto in a Different Perspective with Big Leo",
+    image: "/images/img9.png",
+  },
+  {
+    id: 2,
+    name: "Jareed",
+    text: "Reliable, responsible, trustworthy & swift platform. I'm glad it's been working as expected, great platform, well done Leo'sexchange.",
+    image: "/images/img8.png",
+  },
+  {
+    id: 3,
+    name: "Maxwell",
+    text: "Quick response and good rate! He's honest and he's one person you can trust 100%! Trade with Leo",
+    image: "/images/img7.jpg",
+  },
+];

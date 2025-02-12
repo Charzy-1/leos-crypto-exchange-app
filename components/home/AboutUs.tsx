@@ -4,7 +4,7 @@ import { features } from "@/constants"; // Import features array
 
 const AboutUs = () => {
   return (
-    <div className="background-light900_dark200 mt-[4em] bg-gray-100 p-6 dark:bg-transparent">
+    <div className="background-light900_dark200 mb-6 mt-[4em] bg-gray-100 p-6 dark:bg-transparent">
       {/* Main Section */}
       <section className="text-center">
         {/* Heading */}
