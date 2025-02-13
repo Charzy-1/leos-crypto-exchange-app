@@ -56,8 +56,19 @@ const config: Config = {
         "auth-dark": 'url("/images/auth-dark.png")',
         "auth-light": 'url("/images/auth-light.png")',
       },
+      keyframes: {
+        scroll: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        scroll:
+          "scroll var(--animation-duration, 40s) linear infinite var(--animation-direction, forwards)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
 };
+
 export default config;
