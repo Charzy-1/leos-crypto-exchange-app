@@ -2,16 +2,18 @@
 // import Link from "next/link";
 
 import AboutUs from "@/components/home/AboutUs";
+import Faq from "@/components/home/Faq";
 import Hero from "@/components/home/Hero";
 import Testimonials from "@/components/home/Testimonials";
 // import ROUTES from "@/constants/routes";
 
 const Home = () => {
   return (
-    <div>
+    <div className="mx-8">
       <Hero />
       <AboutUs />
       <Testimonials />
+      <Faq />
     </div>
   );
 };
