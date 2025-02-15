@@ -119,3 +119,14 @@ export const faqData = [
       "You can contact support via telegram and watsapp by clicking any of these icon on the webpage or visit our contact section",
   },
 ];
+
+export const socialMedia = [
+  {
+    id: 1,
+    img: "/git.svg",
+  },
+  {
+    id: 2,
+    img: "/twit.svg",
+  },
+];

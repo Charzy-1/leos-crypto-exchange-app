@@ -13,7 +13,7 @@ const Testimonials = () => {
           <span className="text-green-500"> satisfied clients</span>
         </h1>
         <div className="flex flex-col items-center">
-          <div className="flex h-[40vh] flex-col items-center rounded-md antialiased md:h-[30vh] lg:h-[25vh] xl:h-[40vh]">
+          <div className="flex h-[40vh] flex-col items-center rounded-md antialiased md:h-[35vh] lg:h-[25vh] xl:h-[40vh]">
             <InfiniteMovingCards
               items={testimonials}
               direction="right"

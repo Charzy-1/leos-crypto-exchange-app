@@ -3,6 +3,7 @@
 
 import AboutUs from "@/components/home/AboutUs";
 import Faq from "@/components/home/Faq";
+import Footer from "@/components/home/Footer";
 import Hero from "@/components/home/Hero";
 import Testimonials from "@/components/home/Testimonials";
 // import ROUTES from "@/constants/routes";
@@ -14,6 +15,7 @@ const Home = () => {
       <AboutUs />
       <Testimonials />
       <Faq />
+      <Footer />
     </div>
   );
 };
