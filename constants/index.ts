@@ -123,10 +123,12 @@ export const faqData = [
 export const socialMedia = [
   {
     id: 1,
-    img: "/git.svg",
+    img: "/watsapp.svg",
+    href: "https://api.whatsapp.com/send/?phone=%2B2348053188798&text&type=phone_number&app_absent=0",
   },
   {
     id: 2,
-    img: "/twit.svg",
+    img: "/ig.svg",
+    href: "https://www.instagram.com/tradewithleo0?igsh=MTAwemlhN3o3ZXg4cA==",
   },
 ];

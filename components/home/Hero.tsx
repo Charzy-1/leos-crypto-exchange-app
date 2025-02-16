@@ -68,7 +68,7 @@ const Hero = () => {
       </div>
 
       {/* Floating WhatsApp and Telegram buttons */}
-      <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-4">
+      <div className="fixed bottom-3 right-4 z-50 flex flex-col gap-4">
         <a
           href="https://api.whatsapp.com/send/?phone=%2B2348053188798&text&type=phone_number&app_absent=0"
           target="_blank"

@@ -26,7 +26,7 @@ const Footer = () => {
           />
         </a>
       </div>
-      <div className="mt-16 flex flex-col items-center justify-between md:flex-row">
+      <div className="mx-8 mt-16 flex flex-col items-center justify-between md:flex-row">
         <p className="text-sm font-light md:text-base md:font-normal">
           Copyright &copy; {new Date().getFullYear()} Leos Exchange
         </p>
@@ -48,15 +48,18 @@ const Footer = () => {
           </Link>
         </p>
 
-        <div className="flex items-center gap-6 md:gap-3">
+        <div className="mt-4 flex items-center gap-6 md:gap-3">
           {socialMedia.map((info) => (
-            <div
+            <a
               key={info.id}
+              href={info.href}
+              target="_blank"
+              rel="noopener noreferrer"
               // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-              className="flex size-10 cursor-pointer items-center justify-center rounded-lg border border-black bg-black bg-opacity-75 saturate-150 backdrop-blur-lg"
+              className="flex size-10 cursor-pointer items-center justify-center rounded-lg border border-black saturate-150 backdrop-blur-lg dark:border-white"
             >
               <Image src={info.img} alt="icons" width={20} height={20} />
-            </div>
+            </a>
           ))}
         </div>
       </div>
