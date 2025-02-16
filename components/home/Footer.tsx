@@ -14,7 +14,7 @@ const Footer = () => {
           Ready to take <span className="text-green-500">your</span> crypto
           trading to the next level?
         </h1>
-        <p className="text-white-200 my-5 text-center md:mt-10">
+        <p className="my-5 text-center text-white md:mt-10">
           Reach out to me today and let&apos;s discuss how I can help you trade
           what you have.
         </p>
