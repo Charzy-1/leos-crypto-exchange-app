@@ -18,11 +18,11 @@ const AboutUs = () => {
         </p>
 
         {/* Grid for Features */}
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mx-auto grid  max-w-6xl gap-8 rounded-lg bg-green-500 p-6 dark:bg-gray-800 sm:grid-cols-2 md:grid-cols-3">
           {features.map(({ id, imgSrc, altText, title, description }) => (
             <div
               key={id}
-              className="card-wrapper dark:shadow-light100_dark100 rounded-lg p-6 shadow-lg"
+              className="card-wrapper dark:shadow-light100_dark100 rounded-lg p-4 shadow-lg"
             >
               <div className="relative mx-auto mb-4 size-16">
                 <Image src={imgSrc} alt={altText} width={64} height={64} />

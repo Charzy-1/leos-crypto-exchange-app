@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa6";
 
 import { socialMedia } from "@/constants";
@@ -7,15 +9,6 @@ import MagicButton from "../ui/MagicButton";
 const Footer = () => {
   return (
     <footer className="w-full pb-10 pt-20">
-      {/* background grid */}
-      <div className="absolute -bottom-72 left-0 min-h-96 w-full">
-        <img
-          src="/footer-grid.svg"
-          alt="grid"
-          className="size-full opacity-50 "
-        />
-      </div>
-
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
           Ready to take <span className="text-green-500">your</span> crypto
@@ -35,16 +28,34 @@ const Footer = () => {
       </div>
       <div className="mt-16 flex flex-col items-center justify-between md:flex-row">
         <p className="text-sm font-light md:text-base md:font-normal">
-          Copyright © 2024 Adrian Hajdin
+          Copyright &copy; {new Date().getFullYear()} Leos Exchange
+        </p>
+
+        <p>
+          <Link
+            href="/Terms-and-conditions"
+            className="text-green-500 hover:underline"
+          >
+            Terms and Conditions
+          </Link>
+        </p>
+        <p>
+          <Link
+            href="/Privacy-Policy"
+            className="text-green-500 hover:underline"
+          >
+            Privacy Policy
+          </Link>
         </p>
 
         <div className="flex items-center gap-6 md:gap-3">
           {socialMedia.map((info) => (
             <div
               key={info.id}
-              className="saturate-180 bg-black-200 border-black-300 flex size-10 cursor-pointer items-center justify-center rounded-lg border bg-opacity-75 backdrop-blur-lg"
+              // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
+              className="flex size-10 cursor-pointer items-center justify-center rounded-lg border border-black bg-black bg-opacity-75 saturate-150 backdrop-blur-lg"
             >
-              <img src={info.img} alt="icons" width={20} height={20} />
+              <Image src={info.img} alt="icons" width={20} height={20} />
             </div>
           ))}
         </div>
