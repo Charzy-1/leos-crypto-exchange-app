@@ -132,3 +132,24 @@ export const socialMedia = [
     href: "https://www.instagram.com/tradewithleo0?igsh=MTAwemlhN3o3ZXg4cA==",
   },
 ];
+
+export const actions = [
+  {
+    id: 1,
+    label: "Sell Crypto",
+    icon: "💰", // Replace with an actual icon component if needed
+    href: "/sell-crypto",
+  },
+  {
+    id: 2,
+    label: "Buy Crypto",
+    icon: "💵",
+    href: "/buy-crypto",
+  },
+  {
+    id: 3,
+    label: "Swap Crypto",
+    icon: "🔄",
+    href: "/swap-crypto",
+  },
+];
