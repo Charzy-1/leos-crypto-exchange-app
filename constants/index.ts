@@ -159,3 +159,10 @@ export const tabs = [
   { name: "Sell", href: "/sell" },
   { name: "Swap", href: "/swap" },
 ];
+
+export const coinFees = {
+  BTC: { min: 5, max: 500, fee: 3 },
+  ETH: { min: 5, max: 2000, fee: 3 },
+  USDT: { min: 5, max: 2000, fee: 2 },
+  // Add more coins and their respective fee details as needed
+};

@@ -1,17 +1,31 @@
 "use client";
 
 import { useRouter, usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { tabs } from "@/constants"; // Import the tabs array from constants
+import { tabs, coinFees } from "@/constants"; // Import the coinFees array from constants
 
 const TransactionForm = () => {
   const router = useRouter();
   const pathname = usePathname(); // Get the current route
-  const [coinType, setCoinType] = useState("");
-  const [amount, setAmount] = useState("");
+  const [coinType, setCoinType] = useState<string>("");
+  const [amount, setAmount] = useState<string>("");
+  const [feeInfo, setFeeInfo] = useState<{
+    min: number;
+    max: number;
+    fee: number;
+  } | null>(null);
 
   const isFormValid = coinType !== "" && amount !== "";
+
+  useEffect(() => {
+    if (coinType) {
+      setFeeInfo(coinFees[coinType as keyof typeof coinFees]); // Type assertion to guarantee coinType is a key of coinFees
+    }
+  }, [coinType]);
+
+  const additionalFee = feeInfo ? feeInfo.fee : 0;
+  const totalAmount = amount ? parseFloat(amount) + additionalFee : 0;
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50">
@@ -46,6 +60,15 @@ const TransactionForm = () => {
             <option value="ETH">Ethereum (ETH)</option>
             <option value="USDT">Tether (USDT)</option>
           </select>
+
+          {/* Dynamic Paragraph */}
+          {coinType && feeInfo && (
+            <p className="mt-2 text-sm font-bold text-red-500">
+              Please Note: You can only buy a minimum of ${feeInfo.min} and a
+              maximum of ${feeInfo.max}. An additional fee of ${additionalFee}{" "}
+              (₦{totalAmount}) is added.
+            </p>
+          )}
 
           <label className="mt-4 block text-gray-700">Amount</label>
           <div className="relative">
