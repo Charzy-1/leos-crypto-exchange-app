@@ -138,18 +138,24 @@ export const actions = [
     id: 1,
     label: "Sell Crypto",
     icon: "💰", // Replace with an actual icon component if needed
-    href: "/sell-crypto",
+    href: "/sell",
   },
   {
     id: 2,
     label: "Buy Crypto",
     icon: "💵",
-    href: "/buy-crypto",
+    href: "/buy",
   },
   {
     id: 3,
     label: "Swap Crypto",
     icon: "🔄",
-    href: "/swap-crypto",
+    href: "/swap",
   },
+];
+
+export const tabs = [
+  { name: "Buy", href: "/buy" },
+  { name: "Sell", href: "/sell" },
+  { name: "Swap", href: "/swap" },
 ];

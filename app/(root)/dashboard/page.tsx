@@ -1,12 +1,10 @@
 "use client";
-// import ROUTES from "@/constants/routes";
 import Link from "next/link";
 import React, { useState } from "react";
 
 import { actions } from "@/constants";
 
 const Dashboard = () => {
-  // ✅ Corrected: useState is now inside the component
   const [active, setActive] = useState("All");
 
   return (
