@@ -13,7 +13,7 @@ export const SignInSchema = z.object({
 });
 
 export const SignUpSchema = z.object({
-  username: z
+  userName: z
     .string()
     .min(3, { message: "Username must be at least 3 characters long." })
     .max(30, { message: "Username cannot exceed 30 characters." })

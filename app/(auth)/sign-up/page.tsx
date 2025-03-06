@@ -4,6 +4,7 @@ import React from "react";
 
 import AuthForm from "@/components/forms/AuthForm";
 import { SignUpSchema } from "@/lib/validations";
+import { signUp } from "@/lib/actions/auth";
 
 const SignUp = () => {
   return (
@@ -14,9 +15,9 @@ const SignUp = () => {
         email: "",
         password: "",
         name: "",
-        username: "",
+        userName: "",
       }}
-      onSubmit={(data) => Promise.resolve({ success: true, data })}
+      onSubmit={signUp}
     />
   );
 };
