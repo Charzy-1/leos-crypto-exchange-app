@@ -1,16 +1,23 @@
 "use client";
 
-import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
+import { ReactNode } from "react";
 
-import Navbar from "@/components/navigation/navbar";
 import LeftSidebar from "@/components/navigation/LeftSidebar";
+import Navbar from "@/components/navigation/navbar";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
 
   // Define routes where the LeftSidebar should be visible
-  const routesWithSidebar = ["/dashboard", "/earning", "/profile"];
+  const routesWithSidebar = [
+    "/dashboard",
+    "/earning",
+    "/profile",
+    "/sell",
+    "/buy",
+    "/swap",
+  ];
   const shouldShowSidebar = routesWithSidebar.some((route) =>
     pathname.startsWith(route)
   );

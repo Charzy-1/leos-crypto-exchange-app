@@ -22,11 +22,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import ROUTES from "@/constants/routes";
+import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 interface AuthFormProps<T extends FieldValues> {
   schema: ZodType<T>;
   defaultValues: T;
-  onSubmit: (data: T) => Promise<{ success: boolean }>;
+  onSubmit: (data: T) => Promise<{ success: boolean; error?: string }>;
   formType: "SIGN_IN" | "SIGN_UP";
 }
 
@@ -41,11 +43,32 @@ const AuthForm = <T extends FieldValues>({
     defaultValues: defaultValues as DefaultValues<T>,
   });
 
-  const handleSubmit: SubmitHandler<T> = async () => {
-    // TODO: Authenticate User
+  const router = useRouter();
+  const isSignIn = formType === "SIGN_IN"; // Fixed: Using correct variable
+
+  // Fixed: Accepting `data` parameter inside handleSubmit
+  const handleSubmit: SubmitHandler<T> = async (data) => {
+    const result = await onSubmit(data);
+
+    if (result.success) {
+      toast({
+        title: "Success",
+        description: isSignIn
+          ? "You have successfully signed in."
+          : "You have successfully signed up.",
+      });
+
+      router.push("/dashboard");
+    } else {
+      toast({
+        title: `Error ${isSignIn ? "signing in" : "signing up"}`, // Fixed string interpolation
+        description: result.error ?? "An error occurred.",
+        variant: "destructive",
+      });
+    }
   };
 
-  const buttonText = formType === "SIGN_IN" ? "Sign In" : "Sign Up";
+  const buttonText = isSignIn ? "Sign In" : "Sign Up";
 
   return (
     <Form {...form}>
@@ -84,13 +107,13 @@ const AuthForm = <T extends FieldValues>({
           className="primary-gradient paragraph-medium min-h-12 w-full rounded-2 px-4 py-3 font-inter !text-light-900"
         >
           {form.formState.isSubmitting
-            ? buttonText === "Sign In"
-              ? "Signin In..."
+            ? isSignIn
+              ? "Signing In..."
               : "Signing Up..."
             : buttonText}
         </Button>
 
-        {formType === "SIGN_IN" ? (
+        {isSignIn ? (
           <p>
             Not registered yet?{" "}
             <Link
@@ -102,7 +125,7 @@ const AuthForm = <T extends FieldValues>({
           </p>
         ) : (
           <p>
-            Already Registered?{" "}
+            Already registered?{" "}
             <Link
               href={ROUTES.SIGN_IN}
               className="paragraph-semibold primary-text-gradient"

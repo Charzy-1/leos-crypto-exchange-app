@@ -107,6 +107,10 @@
     @apply border-light-800 dark:border-dark-300;
   }
 
+  .heading {
+    @apply font-bold text-4xl md:text-5xl text-center;
+  }
+
   .light-border-2 {
     @apply border-light-700 dark:border-dark-400 !important;
   }

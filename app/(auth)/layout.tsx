@@ -16,7 +16,7 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
               Join Leos Exchange
             </h1>
             <p className="paragraph-regular text-dark500_light400">
-              To get your best rate
+              For a better trading experience
             </p>
           </div>
           <Image
