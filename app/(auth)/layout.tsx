@@ -2,8 +2,14 @@ import Image from "next/image";
 import { ReactNode } from "react";
 
 import SocialAuthForm from "@/components/forms/SocialAuthForm";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-const AuthLayout = ({ children }: { children: ReactNode }) => {
+const AuthLayout = async ({ children }: { children: ReactNode }) => {
+  const session = await auth();
+
+  if (session) redirect("/dashboard");
+
   return (
     // Entire page container
     <main className="flex min-h-screen items-center justify-center bg-auth-light bg-cover bg-center bg-no-repeat px-4 py-10 dark:bg-auth-dark">

@@ -4,12 +4,18 @@ export const SignInSchema = z.object({
   email: z
     .string()
     .min(1, { message: "Email is required" })
-    .email({ message: "Please provide a valid email address." }),
+    .email({ message: "Please provide a valid email address." })
+    .refine((value) => value !== "invalid@example.com", {
+      message: "Email is incorrect.",
+    }),
 
   password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters long." })
-    .max(100, { message: "Password cannot exceed 100 characters." }),
+    .max(100, { message: "Password cannot exceed 100 characters." })
+    .refine((value) => value !== "wrongpassword", {
+      message: "Password is incorrect.",
+    }),
 });
 
 export const SignUpSchema = z.object({

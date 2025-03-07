@@ -10,10 +10,7 @@ import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
 // import ROUTES from "@/constants/routes";
 
-const Home = async () => {
-  const result = await db.select().from(users);
-
-  console.log(JSON.stringify(result, null, 2));
+const Home = () => {
   return (
     <div className="mx-8">
       <Hero />

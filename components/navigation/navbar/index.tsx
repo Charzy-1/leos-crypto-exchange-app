@@ -1,14 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Theme from "./Theme";
 import MobileNavigation from "./MobileNavigation";
+import { Avatar } from "@/components/ui/avatar";
+import { Session } from "next-auth";
+import { getInitials } from "@/lib/utils";
 
-const Navbar = () => {
+const Navbar = ({ session }: { session: Session }) => {
   const [isHomePage, setIsHomePage] = useState(false);
 
   useEffect(() => {
-    // Check if the current path is '/' after component mounts
     if (typeof window !== "undefined") {
       setIsHomePage(window.location.pathname === "/");
     }
@@ -28,12 +32,14 @@ const Navbar = () => {
         </p>
       </Link>
 
-      {/* Toggle button container */}
       <div className="flex-between gap-5">
         <Theme />
-
-        {/* Only show MobileNavigation on /dashboard, hide it on the homepage */}
-        {!isHomePage && <MobileNavigation />}
+        {!isHomePage && <MobileNavigation />}{" "}
+        <Link href="/profile">
+          <Avatar className="w-10 h-10 cursor-pointer border border-gray-300 hover:ring-2 hover:ring-green-500 transition-all flex items-center justify-center text-white bg-green-500 font-bold rounded-full">
+            {getInitials(session?.user?.name || "IN")}
+          </Avatar>
+        </Link>
       </div>
     </nav>
   );
