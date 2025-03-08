@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers"; // ✅ Correct way to get the headers
 import LeftSidebar from "@/components/navigation/LeftSidebar";
 import Navbar from "@/components/navigation/navbar";
 import { auth } from "@/auth";
@@ -8,11 +9,11 @@ import SidebarWrapper from "@/components/navigation/SidebarWrapper";
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   const session = await auth(); // Check authentication
 
-  if (!session) redirect("/sign-in"); // Redirect if not authenticated
+  if (!session) redirect("/sign-in");
 
   return (
     <main className="background-light850_dark100 relative">
-      <Navbar session={session} />
+      <Navbar session={session ?? undefined} />
       <div className="flex">
         {/* Sidebar is only visible on specific pages */}
         <SidebarWrapper>

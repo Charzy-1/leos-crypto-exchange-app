@@ -19,7 +19,7 @@ const Navbar = ({ session }: { session: Session }) => {
   }, []);
 
   return (
-    <nav className="flex-between background-light900_dark200 fixed z-50 w-full gap-5 p-4 shadow-light-300 dark:shadow-none sm:px-12">
+    <nav className="flex-between background-light900_dark200 fixed z-50 w-full gap-5 px-6 py-4 shadow-light-300 dark:shadow-none sm:px-12">
       <Link href="/" className="flex items-center gap-1">
         <Image
           src="/images/site-logo.svg"
@@ -32,10 +32,10 @@ const Navbar = ({ session }: { session: Session }) => {
         </p>
       </Link>
 
-      <div className="flex-between gap-5">
+      <div className="flex-between gap-4 ">
         <Theme />
         {!isHomePage && <MobileNavigation />}{" "}
-        <Link href="/profile">
+        <Link href="/my-profile">
           <Avatar className="w-10 h-10 cursor-pointer border border-gray-300 hover:ring-2 hover:ring-green-500 transition-all flex items-center justify-center text-white bg-green-500 font-bold rounded-full">
             {getInitials(session?.user?.name || "IN")}
           </Avatar>
