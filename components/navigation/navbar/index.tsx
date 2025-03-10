@@ -9,7 +9,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { Session } from "next-auth";
 import { getInitials } from "@/lib/utils";
 
-const Navbar = ({ session }: { session: Session }) => {
+const Navbar = ({ session }: { session: Session | null }) => {
   const [isHomePage, setIsHomePage] = useState(false);
 
   useEffect(() => {
