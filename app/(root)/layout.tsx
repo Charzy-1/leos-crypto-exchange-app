@@ -1,53 +1,25 @@
-"use client";
-
-import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
-
+import { redirect } from "next/navigation";
+import { headers } from "next/headers"; // ✅ Correct way to access headers
+import { auth } from "@/auth";
 import LeftSidebar from "@/components/navigation/LeftSidebar";
 import Navbar from "@/components/navigation/navbar";
+import SidebarWrapper from "@/components/navigation/SidebarWrapper";
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
-  const pathname = usePathname();
-
-  // Define routes where the LeftSidebar should be visible
-  const routesWithSidebar = [
-    "/dashboard",
-    "/earning",
-    "/profile",
-    "/sell",
-    "/buy",
-    "/swap",
-  ];
-  const shouldShowSidebar = routesWithSidebar.some((route) =>
-    pathname.startsWith(route)
-  );
-
-  // Check if the current route is `/home`
-  const isHomePage = pathname === "/home";
+const RootLayout = async ({ children }: { children: ReactNode }) => {
+  const session = await auth(); // Check authentication
 
   return (
     <main className="background-light850_dark100 relative">
-      {/* Navbar is always visible */}
-      <Navbar />
-
+      <Navbar session={session ?? null} />
       <div className="flex">
-        {/* Render LeftSidebar only for defined routes */}
-        {shouldShowSidebar && (
-          <div className="hidden md:block lg:w-[266px]">
-            <LeftSidebar />
-          </div>
-        )}
+        {/* Sidebar is only visible on specific pages */}
+        <SidebarWrapper>
+          <LeftSidebar />
+        </SidebarWrapper>
 
-        {/* Main content section */}
-        <section
-          className={`flex min-h-screen flex-1 flex-col px-6 pb-6 pt-28 max-md:pb-14 ${
-            shouldShowSidebar
-              ? "" // Sidebar present, so no centering
-              : isHomePage
-                ? "w-full" // No centering for /home
-                : "w-full" // Centered for other routes
-          }`}
-        >
+        {/* Main content */}
+        <section className="flex min-h-screen flex-1 flex-col px-6 pb-6 pt-28 max-md:pb-14">
           {children}
         </section>
       </div>

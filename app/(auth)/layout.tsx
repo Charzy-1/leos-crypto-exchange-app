@@ -1,9 +1,15 @@
 import Image from "next/image";
 import { ReactNode } from "react";
-
+import Link from "next/link";
 import SocialAuthForm from "@/components/forms/SocialAuthForm";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-const AuthLayout = ({ children }: { children: ReactNode }) => {
+const AuthLayout = async ({ children }: { children: ReactNode }) => {
+  const session = await auth();
+
+  if (session) redirect("/dashboard");
+
   return (
     // Entire page container
     <main className="flex min-h-screen items-center justify-center bg-auth-light bg-cover bg-center bg-no-repeat px-4 py-10 dark:bg-auth-dark">
@@ -12,9 +18,12 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
         {/* The h1, pagraph and logo container */}
         <div className="flex items-center justify-between gap-2">
           <div className="space-y-2.5">
-            <h1 className="h2-bold text-dark100_light900">
-              Join Leos Exchange
-            </h1>
+            <Link href="/">
+              <h1 className="h2-bold text-dark100_light900">
+                Join Leos Exchange
+              </h1>
+            </Link>
+
             <p className="paragraph-regular text-dark500_light400">
               For a better trading experience
             </p>

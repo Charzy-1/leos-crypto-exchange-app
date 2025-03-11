@@ -8,7 +8,7 @@ const Dashboard = () => {
   const [active, setActive] = useState("All");
 
   return (
-    <section className="px-8">
+    <section className="px-4 sm:px-6 md:px-8">
       <div className="flex flex-row flex-wrap items-center justify-center space-x-0 space-y-6 md:space-x-6 md:space-y-0 lg:justify-between">
         <h1 className="heading">Welcome User!</h1>
 

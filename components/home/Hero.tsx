@@ -29,7 +29,7 @@ const Hero = () => {
           {/* Buttons */}
           <div className="flex flex-col items-center justify-center gap-4 md:flex-row lg:justify-start">
             <Link href={ROUTES.SIGN_IN}>
-              <button className="primary-gradient rounded-lg px-6 py-3 font-bold text-green-200">
+              <button className="primary-gradient rounded-lg px-6 py-3 font-extrabold text-white">
                 Trade with Leo
               </button>
             </Link>
