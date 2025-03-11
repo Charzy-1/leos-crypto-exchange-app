@@ -9,18 +9,6 @@ import SidebarWrapper from "@/components/navigation/SidebarWrapper";
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   const session = await auth(); // Check authentication
 
-  // const protectedRoutes = ["/dashboard"]; // Define protected routes
-
-  // // ✅ Await headers() to resolve the promise before calling `.get()`
-  // const requestHeaders = await headers();
-  // const pathname = requestHeaders.get("x-pathname") || "/"; // Fallback to "/"
-
-  // // Redirect unauthenticated users trying to access protected routes
-  // if (!session && protectedRoutes.includes(pathname)) {
-  //   redirect("/"); // Redirect to homepage instead of sign-in page
-  // }
-  if (!session) redirect("/sign-in");
-
   return (
     <main className="background-light850_dark100 relative">
       <Navbar session={session ?? null} />

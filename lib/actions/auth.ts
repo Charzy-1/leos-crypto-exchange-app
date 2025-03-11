@@ -1,10 +1,11 @@
 "use server";
 
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
 import { hash } from "bcryptjs";
 import { eq } from "drizzle-orm";
+
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { config } from "process";
@@ -14,11 +15,6 @@ export const signInWithCredentials = async (
 ) => {
   const { email, password } = params;
 
-  //   const ip = (await headers()).get("x-forwarded-for") || "127.0.0.1";
-  //   const { success } = await ratelimit.limit(ip);
-
-  //   if (!success) return redirect("/too-fast");
-
   try {
     const result = await signIn("credentials", {
       email,
@@ -27,13 +23,13 @@ export const signInWithCredentials = async (
     });
 
     if (result?.error) {
-      return { success: false, error: result.error };
+      return { success: false, error: result.error }; // Pass the error message from NextAuth
     }
 
     return { success: true };
   } catch (error) {
     console.log(error, "Signin error");
-    return { success: false, error: "Signin error" };
+    return { success: false, error: "Invalid email or password" };
   }
 };
 
