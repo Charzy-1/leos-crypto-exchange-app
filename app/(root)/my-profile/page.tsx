@@ -1,20 +1,27 @@
+"use client";
+
+import { signOut } from "next-auth/react"; // Import from NextAuth
 import { Button } from "@/components/ui/button";
-import { signOut } from "@/auth";
-import React from "react";
+import { useRouter } from "next/navigation";
 
 const Profile = () => {
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOut({ redirect: false }); // Sign out without redirecting immediately
+    router.push("/sign-in"); // Manually redirect to "/sign-in"
+  };
+
   return (
-    <>
-      <form
-        action={async () => {
-          "use server";
-          await signOut();
-        }}
-        className="mb-10"
+    <div className="relative">
+      {/* Button positioned at the top-right corner */}
+      <Button
+        onClick={handleSignOut}
+        className="absolute top-4 right-4" // Position the button to the top-right corner
       >
-        <Button>Sign Out</Button>
-      </form>
-    </>
+        Sign Out
+      </Button>
+    </div>
   );
 };
 

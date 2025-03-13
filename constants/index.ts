@@ -16,7 +16,7 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/icons/signout.svg",
-    route: "/sign-in",
+    route: "/my-profile",
     label: "Sign out",
   },
 ];
