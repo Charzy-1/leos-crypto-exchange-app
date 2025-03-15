@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import { redirect } from "next/navigation";
-import { headers } from "next/headers"; // ✅ Correct way to access headers
+
 import { auth } from "@/auth";
 import LeftSidebar from "@/components/navigation/LeftSidebar";
 import Navbar from "@/components/navigation/navbar";
