@@ -1,16 +1,32 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { useSession, getSession } from "next-auth/react"; // ✅ Import getSession
 import { actions } from "@/constants";
 
 const Dashboard = () => {
+  const { data: session, status, update } = useSession(); // ✅ Get session and update function
   const [active, setActive] = useState("All");
+  const [firstName, setFirstName] = useState("User");
+
+  useEffect(() => {
+    const fetchSession = async () => {
+      const newSession = await getSession(); // ✅ Fetch latest session data
+      if (newSession?.user?.name) {
+        setFirstName(newSession.user.name.split(" ")[0]); // ✅ Extract first name
+      }
+    };
+
+    fetchSession(); // ✅ Call function on component mount
+  }, []);
 
   return (
     <section className="px-4 sm:px-6 md:px-8">
       <div className="flex flex-row flex-wrap items-center justify-center space-x-0 space-y-6 md:space-x-6 md:space-y-0 lg:justify-between">
-        <h1 className="heading">Welcome User!</h1>
+        {/* ✅ Dynamic Welcome Message with Green First Name */}
+        <h1 className="heading">
+          Welcome <span className="text-green-500">{firstName}</span>!
+        </h1>
 
         <div className="grid w-full max-w-[460px] grid-cols-3 gap-6">
           {actions.map((action) => (
