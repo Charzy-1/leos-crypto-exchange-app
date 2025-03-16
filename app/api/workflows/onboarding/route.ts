@@ -66,8 +66,8 @@ export const { POST } = serve<InitialData>(async (context) => {
 
         <p style="color: #333;">If you have any questions, feel free to reach out to our support team at <a href="mailto:support@leos-exchange.com" style="color: #22c55e;">support@leos-exchange.com</a>.</p>
 
-        <p style="color: #22c55e;">Happy Trading! 🚀</p>
-        <p><strong style="color: #22c55e;">Leos Exchange Team</strong></p>
+        <p>Happy Trading! 🚀</p>
+        <p><strong>Leos Exchange Team</strong></p>
       </div>
     `,
     });
