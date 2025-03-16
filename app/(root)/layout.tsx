@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-
 import { auth } from "@/auth";
 import LeftSidebar from "@/components/navigation/LeftSidebar";
 import Navbar from "@/components/navigation/navbar";
 import SidebarWrapper from "@/components/navigation/SidebarWrapper";
+import UpdateActivity from "@/components/UpdateActivity"; // ✅ Import the client component
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   const session = await auth(); // Check authentication
@@ -11,13 +11,12 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
   return (
     <main className="background-light850_dark100 relative">
       <Navbar session={session ?? null} />
+      <UpdateActivity userId={session?.user?.id} />{" "}
+      {/* ✅ Runs only on the client */}
       <div className="flex">
-        {/* Sidebar is only visible on specific pages */}
         <SidebarWrapper>
           <LeftSidebar />
         </SidebarWrapper>
-
-        {/* Main content */}
         <section className="flex min-h-screen flex-1 flex-col px-6 pb-6 pt-28 max-md:pb-14">
           {children}
         </section>
