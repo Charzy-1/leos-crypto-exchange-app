@@ -10,7 +10,6 @@ import {
   useForm,
 } from "react-hook-form";
 import { z, ZodType } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -24,6 +23,9 @@ import { Input } from "@/components/ui/input";
 import ROUTES from "@/constants/routes";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 interface AuthFormProps<T extends FieldValues> {
   schema: ZodType<T>;
@@ -44,9 +46,27 @@ const AuthForm = <T extends FieldValues>({
   });
 
   const router = useRouter();
-  const isSignIn = formType === "SIGN_IN"; // Fixed: Using correct variable
+  const isSignIn = formType === "SIGN_IN";
 
-  // Fixed: Accepting `data` parameter inside handleSubmit
+  // Initialize state to track visibility of password fields
+  const [showPasswords, setShowPasswords] = useState(() => {
+    const initialShowPasswords: Record<string, boolean> = {};
+    Object.keys(defaultValues).forEach((field) => {
+      if (field.toLowerCase().includes("password")) {
+        initialShowPasswords[field] = false; // Hidden by default
+      }
+    });
+    return initialShowPasswords;
+  });
+
+  // Function to toggle password visibility for a specific field
+  const toggleShowPassword = (fieldName: string) => {
+    setShowPasswords((prev) => ({
+      ...prev,
+      [fieldName]: !prev[fieldName],
+    }));
+  };
+
   const handleSubmit: SubmitHandler<T> = async (data) => {
     const result = await onSubmit(data);
 
@@ -57,11 +77,10 @@ const AuthForm = <T extends FieldValues>({
           ? "You have successfully signed in."
           : "You have successfully signed up.",
       });
-
       router.push("/dashboard");
     } else {
       toast({
-        title: `Error ${isSignIn ? "signing in" : "signing up"}`, // Fixed string interpolation
+        title: `Error ${isSignIn ? "signing in" : "signing up"}`,
         description: result.error ?? "An error occurred.",
         variant: "destructive",
       });
@@ -81,24 +100,45 @@ const AuthForm = <T extends FieldValues>({
             key={field}
             control={form.control}
             name={field as Path<T>}
-            render={({ field }) => (
-              <FormItem className="flex w-full flex-col gap-2.5">
-                <FormLabel className="paragraph-medium text-dark400_light700">
-                  {field.name === "email"
-                    ? "Email Address"
-                    : field.name.charAt(0).toUpperCase() + field.name.slice(1)}
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    required
-                    type={field.name === "password" ? "password" : "text"}
-                    {...field}
-                    className="paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 no-focus min-h-12 rounded-1.5 border"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            render={({ field }) => {
+              const isPasswordField = field.name.toLowerCase().includes("password");
+              return (
+                <FormItem className="flex w-full flex-col gap-2.5">
+                  <FormLabel className="paragraph-medium text-dark400_light700">
+                    {field.name === "email"
+                      ? "Email Address"
+                      : field.name.charAt(0).toUpperCase() + field.name.slice(1)}
+                  </FormLabel>
+                  <FormControl>
+                    <div className="relative">
+                      <Input
+                        required
+                        type={
+                          isPasswordField && !showPasswords[field.name]
+                            ? "password"
+                            : "text"
+                        }
+                        {...field}
+                        className="paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 no-focus min-h-12 rounded-1.5 border"
+                      />
+                      {isPasswordField && (
+                        <button
+                          type="button"
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                          onClick={() => toggleShowPassword(field.name)}
+                        >
+                          <FontAwesomeIcon
+                            icon={showPasswords[field.name] ? faEyeSlash : faEye}
+                            className="text-gray-600"
+                          />
+                        </button>
+                      )}
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
           />
         ))}
 

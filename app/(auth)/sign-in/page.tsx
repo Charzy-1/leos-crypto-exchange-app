@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import AuthForm from "@/components/forms/AuthForm";
 import { SignInSchema } from "@/lib/validations";
 import { signInWithCredentials } from "@/lib/actions/auth";
+import Link from "next/link";
 
 const SignIn = () => {
   const [error, setError] = useState<string | null>(null);
@@ -31,6 +32,11 @@ const SignIn = () => {
         defaultValues={{ email: "", password: "" }}
         onSubmit={handleSignIn}
       />
+      <p>
+  <Link href="/forgot-password" className="paragraph-semibold primary-text-gradient">
+    Forgot Password?
+  </Link>
+</p>
       {error && <p style={{ color: "red" }}>{error}</p>}{" "}
       {/* Display the error message */}
     </div>
