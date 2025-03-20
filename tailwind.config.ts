@@ -11,8 +11,10 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
+          DEFAULT: "#E7C9A5",
           "100": "#FFF1E6",
           "500": "#FF7000",
+          admin: "#25388C", // ✅ Fix: Correctly nested inside `primary`
         },
         dark: {
           "100": "#000000",
@@ -22,6 +24,7 @@ const config: Config = {
           "500": "#101012",
         },
         light: {
+          "300": "#F8F8FF",
           "400": "#858EAD",
           "500": "#7B8EC8",
           "700": "#DCE3F1",
@@ -29,6 +32,7 @@ const config: Config = {
           "850": "#FDFDFD",
           "900": "#FFFFFF",
         },
+        "primary-admin": "#258C38",
       },
       boxShadow: {
         "light-100":
@@ -55,6 +59,16 @@ const config: Config = {
       backgroundImage: {
         "auth-dark": 'url("/images/auth-dark.png")',
         "auth-light": 'url("/images/auth-light.png")',
+      },
+      border: "hsl(var(--border))",
+      input: "hsl(var(--input))",
+      ring: "hsl(var(--ring))",
+      chart: {
+        "1": "hsl(var(--chart-1))",
+        "2": "hsl(var(--chart-2))",
+        "3": "hsl(var(--chart-3))",
+        "4": "hsl(var(--chart-4))",
+        "5": "hsl(var(--chart-5))",
       },
       keyframes: {
         scroll: {

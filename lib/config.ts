@@ -10,6 +10,10 @@ const config = {
       qstashToken: process.env.QSTASH_TOKEN,
     },
     resendToken: process.env.RESEND_API_KEY,
+    email: {
+      user: process.env.EMAIL_USER,
+      password: process.env.EMAIL_PASSWORD,
+    },
   },
 };
 

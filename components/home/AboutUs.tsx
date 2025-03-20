@@ -18,7 +18,7 @@ const AboutUs = () => {
         </p>
 
         {/* Grid for Features */}
-        <div className="mx-auto grid  max-w-6xl gap-8 rounded-lg bg-green-500 p-6 dark:bg-gray-800 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mx-auto grid  max-w-6xl gap-8 rounded-lg bg-green-500 p-4 dark:bg-gray-800 sm:grid-cols-2 md:grid-cols-3">
           {features.map(({ id, imgSrc, altText, title, description }) => (
             <div
               key={id}

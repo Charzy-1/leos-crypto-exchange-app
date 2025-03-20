@@ -1,23 +1,23 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { useSession, getSession } from "next-auth/react"; // ✅ Import getSession
+import { useSession, getSession } from "next-auth/react"; // Import getSession
 import { actions } from "@/constants";
 
 const Dashboard = () => {
-  const { data: session, status, update } = useSession(); // ✅ Get session and update function
+  const { data: session, status, update } = useSession(); // Get session and update function
   const [active, setActive] = useState("All");
   const [firstName, setFirstName] = useState("User");
 
   useEffect(() => {
     const fetchSession = async () => {
-      const newSession = await getSession(); // ✅ Fetch latest session data
+      const newSession = await getSession(); //  Fetch latest session data
       if (newSession?.user?.name) {
-        setFirstName(newSession.user.name.split(" ")[0]); // ✅ Extract first name
+        setFirstName(newSession.user.name.split(" ")[0]); //  Extract first name
       }
     };
 
-    fetchSession(); // ✅ Call function on component mount
+    fetchSession(); // Call function on component mount
   }, []);
 
   return (
