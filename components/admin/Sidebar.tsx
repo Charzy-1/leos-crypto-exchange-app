@@ -7,9 +7,11 @@ import Link from "next/link";
 import { cn, getInitials } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { Avatar } from "@/components/ui/avatar";
+import { Session } from "next-auth";
 
-const Sidebar = () => {
+const Sidebar = ({ session }: { session: Session | null }) => {
   const pathname = usePathname();
+
   return (
     <div className="admin-sidebar">
       <div>
@@ -56,20 +58,19 @@ const Sidebar = () => {
           })}
         </div>
       </div>
+      <div className="user">
+        <Avatar className="w-10 h-10 cursor-pointer border border-gray-300 hover:ring-2 hover:ring-green-500 transition-all flex items-center justify-center text-white bg-green-500 font-bold rounded-full">
+          {getInitials(session?.user?.name || "IN")}
+        </Avatar>
+
+        <div className="flex flex-col max-md:hidden">
+          <p className="font-semibold text-dark-200 dark:text-gray-200">
+            {session?.user?.name}
+          </p>
+          <p className="text-xs text-light-500">{session?.user?.email}</p>
+        </div>
+      </div>
     </div>
-
-    //     <div className="user">
-
-    //     <Avatar className="w-10 h-10 cursor-pointer border border-gray-300 hover:ring-2 hover:ring-green-500 transition-all flex items-center justify-center text-white bg-green-500 font-bold rounded-full">
-    //             {getInitials(session?.user?.name || "IN")}
-    //           </Avatar>
-
-    //     <div className="flex flex-col max-md:hidden">
-    //       <p className="font-semibold text-dark-200">{session?.user?.name}</p>
-    //       <p className="text-xs text-light-500">{session?.user?.email}</p>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

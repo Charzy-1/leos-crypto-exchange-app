@@ -180,8 +180,8 @@ export const adminSideBarLinks = [
   },
   {
     img: "/icons/admin/book.svg",
-    route: "/admin/books",
-    text: "All Books",
+    route: "/admin/rates",
+    text: "All Rates",
   },
   {
     img: "/icons/admin/bookmark.svg",
