@@ -77,21 +77,21 @@ export const testimonials = [
     quote:
       "Exchange Gift Cards and Crypto in a Different Perspective with Big Leo.",
     name: "Mark",
-    title: "CTO of Velox",
+    title: "Customer",
     image: "/images/img9.png",
   },
   {
     quote:
       "Reliable, responsible, trustworthy & swift platform. I'm glad it's been working as expected, great platform, well done Leo'sexchange.",
     name: "Jareed",
-    title: "Founder of TechNova",
+    title: "Customer",
     image: "/images/img8.png",
   },
   {
     quote:
       "Quick response and good rate! He's honest and he's one person you can trust 100%! Trade with Leo",
     name: "Maxwell",
-    title: "CEO of WebNest",
+    title: "Customer",
     image: "/images/img7.jpg",
   },
 ];
