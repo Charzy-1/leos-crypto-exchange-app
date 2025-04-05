@@ -42,7 +42,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="my-12">
+      {/* <div className="my-12">
         <h2 className="my-4 text-center text-2xl font-bold text-gray-700 dark:text-gray-300 md:text-3xl">
           Transaction History
         </h2>
@@ -61,7 +61,7 @@ const Dashboard = () => {
             </button>
           ))}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
